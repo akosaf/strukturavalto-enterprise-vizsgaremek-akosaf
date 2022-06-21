@@ -1,0 +1,1 @@
+# strukturavalto-enterprise-vizsgaremek-akosaf
