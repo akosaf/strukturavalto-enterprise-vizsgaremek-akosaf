@@ -29,3 +29,6 @@ Feladat nagysága:
 ☐Legalább 60%-os tesztlefedettség, amely tartalmaz egység és integrációs teszteket is  
 ☐Egy Dockerfile  
 ☐Feladat dokumentáció(README), futtatási parancsok  
+
+Adatbázis:
+![image](https://user-images.githubusercontent.com/63594935/177060032-aae4aba2-2273-4bce-b444-a85a151f5781.png)
