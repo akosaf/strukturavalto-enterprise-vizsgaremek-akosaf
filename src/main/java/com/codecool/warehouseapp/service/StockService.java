@@ -1,7 +1,7 @@
 package com.codecool.warehouseapp.service;
 
 import com.codecool.warehouseapp.dao.StockDao;
-import com.codecool.warehouseapp.model.Stock;
+import com.codecool.warehouseapp.model.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,14 +9,16 @@ import java.util.List;
 @Service
 public class StockService {
 
-    private final StockDao stockDao;
+    private final StockDao dao;
+    private final WarehouseService services;
 
-    public StockService(StockDao itemDao) {
-        this.stockDao = itemDao;
+    public StockService(StockDao dao, WarehouseService services) {
+        this.dao = dao;
+        this.services = services;
     }
 
     public List<Stock> findAll() {
-        return stockDao.findAll();
+        return dao.findAll();
     }
 
     public Stock save(Stock input) {
@@ -24,14 +26,14 @@ public class StockService {
         stock.setId(input.getId());
         constructStock(input, stock);
 
-        return stockDao.save(stock);
+        return dao.save(stock);
     }
 
     public void update(Stock input, Long id) {
         Stock stock = new Stock();
         stock.setId(id);
         constructStock(input, stock);
-        stockDao.save(stock);
+        dao.save(stock);
     }
 
     private void constructStock(Stock input, Stock stock) {
@@ -40,16 +42,32 @@ public class StockService {
         stock.setExpiration(input.getExpiration());
         stock.setPrice(input.getPrice());
         stock.setCountryOfOrigin(input.getCountryOfOrigin());
-        stock.setCategory(input.getCategory());
-        stock.setShipment(input.getShipment());
-        stock.setLocation(input.getLocation());
+
+        Category category = new Category();
+        category.setName(input.getCategory().getName());
+        stock.setCategory(category);
+
+        Shipment shipment = new Shipment();
+        shipment.setShipmentDate(input.getShipment().getShipmentDate());
+        shipment.setCurrency(input.getShipment().getCurrency());
+        Supplier supplier = new Supplier();
+        supplier.setName(input.getShipment().getSupplier().getName());
+        supplier.setCountry(input.getShipment().getSupplier().getCountry());
+        supplier.setDiscount(input.getShipment().getSupplier().getDiscount());
+        supplier.setRegistrationDate(input.getShipment().getSupplier().getRegistrationDate());
+        shipment.setSupplier(supplier);
+        shipment.setWeight(input.getShipment().getWeight());
+        stock.setShipment(shipment);
+
+        Location location = new Location();
+        stock.setLocation(location);
     }
 
     public void delete(Long id) {
-        stockDao.deleteById(id);
+        dao.deleteById(id);
     }
 
     public Stock findById(Long id) {
-        return stockDao.findById(id).get();
+        return dao.findById(id).get();
     }
 }
