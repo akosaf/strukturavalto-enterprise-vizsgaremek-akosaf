@@ -28,20 +28,20 @@ public class Location {
 //    @JsonBackReference
     private Bin bin;
 
-    @ManyToOne
-//    @JsonBackReference
-    private Shelf shelf;
-
-    @ManyToOne
-//    @JsonBackReference
-    private Rack rack;
-
-    @ManyToOne
-//    @JsonBackReference
-    private Aisle aisle;
-
-    @ManyToOne
-//    @JsonBackReference
-    private Zone zone;
+//    @ManyToOne
+////    @JsonBackReference
+//    private Shelf shelf;
+//
+//    @ManyToOne
+////    @JsonBackReference
+//    private Rack rack;
+//
+//    @ManyToOne
+////    @JsonBackReference
+//    private Aisle aisle;
+//
+//    @ManyToOne
+////    @JsonBackReference
+//    private Zone zone;
 
 }

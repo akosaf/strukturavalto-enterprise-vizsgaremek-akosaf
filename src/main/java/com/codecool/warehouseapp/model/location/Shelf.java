@@ -22,4 +22,8 @@ public class Shelf {
 
     private String name;
 
+    @ManyToOne
+//    @JsonBackReference
+    private Rack rack;
+
 }

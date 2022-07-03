@@ -22,4 +22,8 @@ public class Bin {
 
     private String name;
 
+    @ManyToOne
+//    @JsonBackReference
+    private Shelf shelf;
+
 }

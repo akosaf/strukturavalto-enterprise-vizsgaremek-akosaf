@@ -90,22 +90,23 @@ CREATE TABLE category (
 	name VARCHAR(30)
 );
 CREATE TABLE stock (
-	id BIGINT PRIMARY KEY,
-	name VARCHAR(30),
-	description VARCHAR(255),
-	expiration TIMESTAMP,
-	price INT,
-	quantity INT,
-	category_id BIGINT,
-	shipment_id BIGINT,
-	location_id BIGINT,
-	CONSTRAINT fk_category
-		FOREIGN KEY(category_id)
-		REFERENCES category(id),
-	CONSTRAINT fk_shipment
-		FOREIGN KEY(shipment_id)
-		REFERENCES shipment(id),
-	CONSTRAINT fk_location
-		FOREIGN KEY(location_id)
-		REFERENCES location(id)
+    id BIGINT PRIMARY KEY,
+    name VARCHAR(30),
+    description VARCHAR(255),
+    expiration TIMESTAMP,
+    price INT,
+    quantity INT,
+    country_of_origin VARCHAR(30),
+    category_id BIGINT,
+    shipment_id BIGINT,
+    location_id BIGINT,
+    CONSTRAINT fk_category
+        FOREIGN KEY(category_id)
+        REFERENCES category(id),
+    CONSTRAINT fk_shipment
+        FOREIGN KEY(shipment_id)
+        REFERENCES shipment(id),
+    CONSTRAINT fk_location
+        FOREIGN KEY(location_id)
+        REFERENCES location(id)
 );

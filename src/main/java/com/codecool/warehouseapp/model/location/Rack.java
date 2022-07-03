@@ -22,4 +22,8 @@ public class Rack {
 
     private String name;
 
+    @ManyToOne
+//    @JsonBackReference
+    private Aisle aisle;
+
 }

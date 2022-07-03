@@ -22,4 +22,8 @@ public class Aisle {
 
     private String name;
 
+    @ManyToOne
+//    @JsonBackReference
+    private Zone zone;
+
 }

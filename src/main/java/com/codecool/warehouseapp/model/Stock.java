@@ -21,6 +21,7 @@ public class Stock {
     private String description;
     private LocalDate expiration;
     private int price;
+    private int quantity;
     private String countryOfOrigin;
 
     @ManyToOne
