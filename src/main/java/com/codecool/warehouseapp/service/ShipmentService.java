@@ -10,9 +10,9 @@ import java.util.List;
 public class ShipmentService {
 
     private final ShipmentDao dao;
-    private final WarehouseService services;
+    private final InventoryService services;
 
-    public ShipmentService(ShipmentDao dao, WarehouseService services) {
+    public ShipmentService(ShipmentDao dao, InventoryService services) {
         this.dao = dao;
         this.services = services;
     }

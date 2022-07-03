@@ -1,7 +1,7 @@
 package com.codecool.warehouseapp.service;
 
 import com.codecool.warehouseapp.dao.StockDao;
-import com.codecool.warehouseapp.model.*;
+import com.codecool.warehouseapp.model.Stock;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,9 +10,9 @@ import java.util.List;
 public class StockService {
 
     private final StockDao dao;
-    private final WarehouseService services;
+    private final InventoryService services;
 
-    public StockService(StockDao dao, WarehouseService services) {
+    public StockService(StockDao dao, InventoryService services) {
         this.dao = dao;
         this.services = services;
     }
