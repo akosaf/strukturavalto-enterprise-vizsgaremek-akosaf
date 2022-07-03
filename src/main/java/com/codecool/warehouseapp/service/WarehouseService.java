@@ -1,5 +1,7 @@
 package com.codecool.warehouseapp.service;
 
+import com.codecool.warehouseapp.dao.*;
+import com.codecool.warehouseapp.dao.location.*;
 import com.codecool.warehouseapp.service.location.*;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
@@ -8,37 +10,37 @@ import org.springframework.stereotype.Service;
 @Service
 public class WarehouseService {
 
-    private final AisleService aisleService;
-    private final BinService binService;
-    private final RackService rackService;
-    private final ShelfService shelfService;
-    private final ZoneService zoneService;
+    private final AisleDao aisleDao;
+    private final BinDao binDao;
+    private final RackDao rackDao;
+    private final ShelfDao shelfDao;
+    private final ZoneDao zoneDao;
 
-    private final CategoryService categoryService;
-    private final LocationService locationService;
-    private final ShipmentService shipmentService;
-    private final StockService stockService;
-    private final SupplierService supplierService;
+    private final CategoryDao categoryDao;
+    private final LocationDao locationDao;
+    private final ShipmentDao shipmentDao;
+    private final StockDao stockDao;
+    private final SupplierDao supplierDao;
 
-    public WarehouseService(AisleService aisleService,
-                            BinService binService,
-                            RackService rackService,
-                            ShelfService shelfService,
-                            ZoneService zoneService,
-                            CategoryService categoryService,
-                            LocationService locationService,
-                            ShipmentService shipmentService,
-                            StockService stockService,
-                            SupplierService supplierService) {
-        this.aisleService = aisleService;
-        this.binService = binService;
-        this.rackService = rackService;
-        this.shelfService = shelfService;
-        this.zoneService = zoneService;
-        this.categoryService = categoryService;
-        this.locationService = locationService;
-        this.shipmentService = shipmentService;
-        this.stockService = stockService;
-        this.supplierService = supplierService;
+    public WarehouseService(AisleDao aisleDao,
+                            BinDao binDao,
+                            RackDao rackDao,
+                            ShelfDao shelfDao,
+                            ZoneDao zoneDao,
+                            CategoryDao categoryDao,
+                            LocationDao locationDao,
+                            ShipmentDao shipmentDao,
+                            StockDao stockDao,
+                            SupplierDao supplierDao) {
+        this.aisleDao = aisleDao;
+        this.binDao = binDao;
+        this.rackDao = rackDao;
+        this.shelfDao = shelfDao;
+        this.zoneDao = zoneDao;
+        this.categoryDao = categoryDao;
+        this.locationDao = locationDao;
+        this.shipmentDao = shipmentDao;
+        this.stockDao = stockDao;
+        this.supplierDao = supplierDao;
     }
 }
