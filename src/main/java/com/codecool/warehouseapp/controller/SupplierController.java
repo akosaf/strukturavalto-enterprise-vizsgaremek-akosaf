@@ -2,10 +2,15 @@ package com.codecool.warehouseapp.controller;
 
 import com.codecool.warehouseapp.model.Supplier;
 import com.codecool.warehouseapp.service.SupplierService;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.ConstraintViolationException;
+import javax.validation.Valid;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/supplier")
@@ -29,12 +34,12 @@ public class SupplierController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Supplier save(@RequestBody Supplier input) {
+    public Supplier save(@Valid @RequestBody Supplier input) {
         return service.save(input);
     }
 
     @PutMapping("/{id}")
-    public void update(@RequestBody Supplier input, @PathVariable("id") Long id) {
+    public void update(@Valid @RequestBody Supplier input, @PathVariable("id") Long id) {
         service.update(input, id);
     }
 
@@ -44,8 +49,12 @@ public class SupplierController {
         service.delete(id);
     }
 
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler({NoSuchElementException.class, EmptyResultDataAccessException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
     private void handleNotFound() {}
+
+    @ExceptionHandler({HttpMessageNotReadableException.class, ConstraintViolationException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    private void handleBadRequest() {}
 
 }

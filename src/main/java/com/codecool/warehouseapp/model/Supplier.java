@@ -8,7 +8,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
@@ -23,17 +26,17 @@ public class Supplier {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "Supplier name cannot be blank!")
     private String name;
 
-    @NotBlank
+    @NotBlank(message = "Country cannot be blank!")
     private String country;
 
-    @NotBlank
     @DateTimeFormat
     private LocalDate registrationDate;
 
-    @NotBlank
+    @Min(value=0, message="must be equal or greater than 0")
+    @Max(value=100, message="must be equal or less than 100")
     @NumberFormat
     private int discount;
 }

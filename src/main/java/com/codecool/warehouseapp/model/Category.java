@@ -20,6 +20,6 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "Supplier name cannot be blank!")
     private String name;
 }

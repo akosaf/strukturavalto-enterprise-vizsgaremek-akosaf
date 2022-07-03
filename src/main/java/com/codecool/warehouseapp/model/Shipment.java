@@ -8,7 +8,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
@@ -23,19 +26,17 @@ public class Shipment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     @DateTimeFormat
     private LocalDate shipmentDate;
 
-    @NotBlank
+    @Min(value=0, message="must be equal or greater than 0")
     @NumberFormat
     private int weight;
 
-    @NotBlank
+    @Min(value=0, message="must be equal or greater than 0")
     @NumberFormat
     private int currency;
 
-    @NotBlank
     @ManyToOne
     private Supplier supplier;
 

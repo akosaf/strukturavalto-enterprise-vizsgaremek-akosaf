@@ -7,7 +7,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Getter
@@ -21,32 +24,29 @@ public class Stock {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "Stock name cannot be blank!")
     private String name;
 
-    @NotBlank
+    @NotBlank(message = "Stock description cannot be blank!")
     private String description;
 
-    @NotBlank
     @DateTimeFormat
     private LocalDate expiration;
 
-    @NotBlank
+    @Min(value=0, message="must be equal or greater than 0")
     @NumberFormat
     private int price;
 
-    @NotBlank
+    @Min(value=0, message="must be equal or greater than 0")
     @NumberFormat
     private int quantity;
 
-    @NotBlank
+    @NotBlank(message = "Country of origin cannot be blank!")
     private String countryOfOrigin;
 
-    @NotBlank
     @ManyToOne
     private Category category;
 
-    @NotBlank
     @ManyToOne
     private Shipment shipment;
 
