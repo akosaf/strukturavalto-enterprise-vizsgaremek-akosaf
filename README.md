@@ -19,7 +19,7 @@ Követelmények:
 Feladat nagysága:
 
 ☑Legalább két 1-n kapcsolatban lévő tábla  
-☐Legalább két SQL migráció  
+☑Legalább két SQL migráció  
 ☑Legalább két entitás  
 ☑Legalább két service  
 ☑Legalább két controller  
