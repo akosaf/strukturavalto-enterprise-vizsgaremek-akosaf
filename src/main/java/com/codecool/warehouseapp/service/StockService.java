@@ -4,6 +4,7 @@ import com.codecool.warehouseapp.dao.StockDao;
 import com.codecool.warehouseapp.model.Stock;
 import org.springframework.stereotype.Service;
 
+import java.security.InvalidParameterException;
 import java.util.List;
 
 @Service
@@ -37,5 +38,18 @@ public class StockService {
 
     public Stock findById(Long id) {
         return dao.findById(id).orElseThrow();
+    }
+
+    public Stock increaseStockQuantity(Long id, int quantity) {
+        Stock output = dao.findById(id).orElseThrow();
+        output.setQuantity(output.getQuantity() + quantity);
+        return dao.save(output);
+    }
+
+    public Stock decreaseStockQuantity(Long id, int quantity) {
+        Stock output = dao.findById(id).orElseThrow();
+        if (output.getQuantity() < quantity) throw new InvalidParameterException();
+        output.setQuantity(output.getQuantity() - quantity);
+        return dao.save(output);
     }
 }

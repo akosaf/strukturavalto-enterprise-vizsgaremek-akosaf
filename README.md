@@ -1,7 +1,11 @@
 # strukturavalto-enterprise-vizsgaremek-akosaf
 
-Az aktuális verzió a Development branch-en található!
+<h3>Az aktuális verzió a Development branch-en található!  </h3>
 
+<h2>Leírás</h2>
+<h3>Az alkalmazás beszállítók, beérkező szállítmányok, valamint az érkezett termékek kategóriákba rendezett rendszerezésére alkalmas.  </h3>
+<h3>Minden tábla tartalmához saját controller biztosít hozzáférést, a tárolt adatok kilistázhatók, id alapján lekérdezhetők, szerkeszthetők, törölhetők  </h3>
+<h3>Külön prezentációs réteg biztosít lehetőséget leltártöbblet, valamint leltárhiány rögzítésére.  </h3>
 
 Készültség:
 
@@ -30,5 +34,5 @@ Feladat nagysága:
 ☐Egy Dockerfile  
 ☐Feladat dokumentáció(README), futtatási parancsok  
 
-Adatbázis:  
+# Adatbázis:  
 ![image](https://user-images.githubusercontent.com/63594935/177060032-aae4aba2-2273-4bce-b444-a85a151f5781.png)
