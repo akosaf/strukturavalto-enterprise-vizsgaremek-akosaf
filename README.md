@@ -9,8 +9,8 @@ Követelmények:
 
 ☑Maven vagy Gradle projekt  
 ☑Spring Boot alkalmazás  
-☐SQL backend (pl. MySQL, MariaDB, etc...)  
-☐Flyway sémamigráció, SQL táblalétrehozás, adatbetöltés  
+☑SQL backend (pl. MySQL, MariaDB, etc...)  
+☑Flyway sémamigráció, SQL táblalétrehozás, adatbetöltés  
 ☑REST API, Swagger, OpenAPI dokumentációval  
 ☑Hibakezelés  
 ☑Spring Data JPA repository  
