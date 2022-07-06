@@ -1,5 +1,6 @@
 package com.codecool.warehouseapp.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +28,7 @@ public class Shipment {
     private Long id;
 
     @DateTimeFormat
+//    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate shipmentDate;
 
     @Min(value=0, message="must be equal or greater than 0")

@@ -1,5 +1,7 @@
 package com.codecool.warehouseapp.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,6 +18,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "stock")
 public class Stock {
@@ -31,6 +34,7 @@ public class Stock {
     private String description;
 
     @DateTimeFormat
+//    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate expiration;
 
     @Min(value=0, message="must be equal or greater than 0")

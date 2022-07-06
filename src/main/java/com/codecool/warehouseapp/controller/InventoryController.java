@@ -2,6 +2,7 @@ package com.codecool.warehouseapp.controller;
 
 import com.codecool.warehouseapp.model.Stock;
 import com.codecool.warehouseapp.service.StockService;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -33,8 +34,16 @@ public class InventoryController {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     private void handleNotFound() {}
 
-    @ExceptionHandler({HttpMessageNotReadableException.class, ConstraintViolationException.class, InvalidParameterException.class})
+    @ExceptionHandler({HttpMessageNotReadableException.class, ConstraintViolationException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     private void handleBadRequest() {}
+
+    @ExceptionHandler(InvalidParameterException.class)
+    @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+    private void handleNotAcceptable() {}
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    private void handleConflict() {}
 
 }

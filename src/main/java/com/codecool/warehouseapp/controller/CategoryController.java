@@ -2,6 +2,7 @@ package com.codecool.warehouseapp.controller;
 
 import com.codecool.warehouseapp.model.Category;
 import com.codecool.warehouseapp.service.CategoryService;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -56,5 +57,9 @@ public class CategoryController {
     @ExceptionHandler({HttpMessageNotReadableException.class, ConstraintViolationException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     private void handleBadRequest() {}
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    private void handleConflict() {}
 
 }
