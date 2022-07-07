@@ -1,0 +1,653 @@
+openapi: 3.0.1
+info:
+  title: Inventory API
+  version: v1.9.9
+servers:
+- url: http://localhost:8000
+  description: Generated server url
+paths:
+  /{id}/increase:
+    put:
+      tags:
+      - inventory-controller
+      operationId: increaseStockQuantity
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: quantity
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "404":
+          description: Not Found
+        "400":
+          description: Bad Request
+        "409":
+          description: Conflict
+        "406":
+          description: Not Acceptable
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Stock'
+  /{id}/decrease:
+    put:
+      tags:
+      - inventory-controller
+      operationId: decreaseStockQuantity
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: quantity
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "404":
+          description: Not Found
+        "400":
+          description: Bad Request
+        "409":
+          description: Conflict
+        "406":
+          description: Not Acceptable
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Stock'
+  /supplier/{id}:
+    get:
+      tags:
+      - supplier-controller
+      operationId: getItemById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Not Found
+        "400":
+          description: Bad Request
+        "409":
+          description: Conflict
+        "406":
+          description: Not Acceptable
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Supplier'
+    put:
+      tags:
+      - supplier-controller
+      operationId: update
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Supplier'
+        required: true
+      responses:
+        "404":
+          description: Not Found
+        "400":
+          description: Bad Request
+        "409":
+          description: Conflict
+        "406":
+          description: Not Acceptable
+        "200":
+          description: OK
+    delete:
+      tags:
+      - supplier-controller
+      operationId: delete
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Not Found
+        "400":
+          description: Bad Request
+        "409":
+          description: Conflict
+        "406":
+          description: Not Acceptable
+        "204":
+          description: No Content
+  /stock/{id}:
+    get:
+      tags:
+      - stock-controller
+      operationId: getItemByID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Not Found
+        "400":
+          description: Bad Request
+        "409":
+          description: Conflict
+        "406":
+          description: Not Acceptable
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Stock'
+    put:
+      tags:
+      - stock-controller
+      operationId: update_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Stock'
+        required: true
+      responses:
+        "404":
+          description: Not Found
+        "400":
+          description: Bad Request
+        "409":
+          description: Conflict
+        "406":
+          description: Not Acceptable
+        "200":
+          description: OK
+    delete:
+      tags:
+      - stock-controller
+      operationId: delete_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Not Found
+        "400":
+          description: Bad Request
+        "409":
+          description: Conflict
+        "406":
+          description: Not Acceptable
+        "204":
+          description: No Content
+  /shipment/{id}:
+    get:
+      tags:
+      - shipment-controller
+      operationId: getItemByID_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Not Found
+        "400":
+          description: Bad Request
+        "409":
+          description: Conflict
+        "406":
+          description: Not Acceptable
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Shipment'
+    put:
+      tags:
+      - shipment-controller
+      operationId: update_2
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Shipment'
+        required: true
+      responses:
+        "404":
+          description: Not Found
+        "400":
+          description: Bad Request
+        "409":
+          description: Conflict
+        "406":
+          description: Not Acceptable
+        "200":
+          description: OK
+    delete:
+      tags:
+      - shipment-controller
+      operationId: delete_2
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Not Found
+        "400":
+          description: Bad Request
+        "409":
+          description: Conflict
+        "406":
+          description: Not Acceptable
+        "204":
+          description: No Content
+  /category/{id}:
+    get:
+      tags:
+      - category-controller
+      operationId: getItemByID_2
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Not Found
+        "400":
+          description: Bad Request
+        "409":
+          description: Conflict
+        "406":
+          description: Not Acceptable
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Category'
+    put:
+      tags:
+      - category-controller
+      operationId: update_3
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+        required: true
+      responses:
+        "404":
+          description: Not Found
+        "400":
+          description: Bad Request
+        "409":
+          description: Conflict
+        "406":
+          description: Not Acceptable
+        "200":
+          description: OK
+    delete:
+      tags:
+      - category-controller
+      operationId: delete_3
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Not Found
+        "400":
+          description: Bad Request
+        "409":
+          description: Conflict
+        "406":
+          description: Not Acceptable
+        "204":
+          description: No Content
+  /supplier:
+    get:
+      tags:
+      - supplier-controller
+      operationId: findAll
+      responses:
+        "404":
+          description: Not Found
+        "400":
+          description: Bad Request
+        "409":
+          description: Conflict
+        "406":
+          description: Not Acceptable
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Supplier'
+    post:
+      tags:
+      - supplier-controller
+      operationId: save
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Supplier'
+        required: true
+      responses:
+        "404":
+          description: Not Found
+        "400":
+          description: Bad Request
+        "409":
+          description: Conflict
+        "406":
+          description: Not Acceptable
+        "201":
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Supplier'
+  /stock:
+    get:
+      tags:
+      - stock-controller
+      operationId: findAll_1
+      responses:
+        "404":
+          description: Not Found
+        "400":
+          description: Bad Request
+        "409":
+          description: Conflict
+        "406":
+          description: Not Acceptable
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Stock'
+    post:
+      tags:
+      - stock-controller
+      operationId: save_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Stock'
+        required: true
+      responses:
+        "404":
+          description: Not Found
+        "400":
+          description: Bad Request
+        "409":
+          description: Conflict
+        "406":
+          description: Not Acceptable
+        "201":
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Stock'
+  /shipment:
+    get:
+      tags:
+      - shipment-controller
+      operationId: findAll_2
+      responses:
+        "404":
+          description: Not Found
+        "400":
+          description: Bad Request
+        "409":
+          description: Conflict
+        "406":
+          description: Not Acceptable
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Shipment'
+    post:
+      tags:
+      - shipment-controller
+      operationId: save_2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Shipment'
+        required: true
+      responses:
+        "404":
+          description: Not Found
+        "400":
+          description: Bad Request
+        "409":
+          description: Conflict
+        "406":
+          description: Not Acceptable
+        "201":
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Shipment'
+  /category:
+    get:
+      tags:
+      - category-controller
+      operationId: findAll_3
+      responses:
+        "404":
+          description: Not Found
+        "400":
+          description: Bad Request
+        "409":
+          description: Conflict
+        "406":
+          description: Not Acceptable
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+    post:
+      tags:
+      - category-controller
+      operationId: save_3
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+        required: true
+      responses:
+        "404":
+          description: Not Found
+        "400":
+          description: Bad Request
+        "409":
+          description: Conflict
+        "406":
+          description: Not Acceptable
+        "201":
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Category'
+components:
+  schemas:
+    Category:
+      required:
+      - name
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+    Shipment:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        shipmentDate:
+          type: string
+          format: date
+        weight:
+          minimum: 0
+          type: integer
+          format: int32
+        currency:
+          minimum: 0
+          type: integer
+          format: int32
+        supplier:
+          $ref: '#/components/schemas/Supplier'
+    Stock:
+      required:
+      - countryOfOrigin
+      - description
+      - name
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        expiration:
+          type: string
+          format: date
+        price:
+          minimum: 0
+          type: integer
+          format: int32
+        quantity:
+          minimum: 0
+          type: integer
+          format: int32
+        countryOfOrigin:
+          type: string
+        category:
+          $ref: '#/components/schemas/Category'
+        shipment:
+          $ref: '#/components/schemas/Shipment'
+    Supplier:
+      required:
+      - country
+      - name
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        country:
+          type: string
+        registrationDate:
+          type: string
+          format: date
+        discount:
+          maximum: 100
+          minimum: 0
+          type: integer
+          format: int32
