@@ -1,0 +1,27 @@
+version: "2"
+  services:
+    inentory-app:
+      build: .
+      container_name: inventoryapp
+      environment:
+        SPRING_DATASOURCE_URL: 'jdbc:postgresql://db/inventory-db'
+      ports:
+        - '8000:8080'
+      restart: always
+      depends_on:
+        - db
+    db:
+      image: postgres
+      container_name: db
+      environment:
+        - POSTGRES_USER=inventory-user
+        - POSTGRES_PASSWORD=inventory-pw
+        - POSTGRES_DB=inventory-db
+        - PGDATA=/var/lib/postgresql/data/pgdata
+      ports:
+        - 5000:5432
+      volumes:
+        - pgdata:/var/lib/postgresql/data
+      restart: always
+  volumes:
+    pgdata:
